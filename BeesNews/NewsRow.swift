@@ -29,6 +29,7 @@ struct NewsRow: View {
                 Text(new[2].description)
                     .foregroundColor(.gray)
                     .font(.system(size:15))
+                    .bold()
                 }
             }.foregroundColor(.white)
             .font(.system(size: 20))
