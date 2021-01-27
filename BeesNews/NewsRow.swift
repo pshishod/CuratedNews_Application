@@ -8,43 +8,57 @@
 import SwiftUI
 
 struct NewsRow: View {
-    var new: [News]
+    var new: News
     var body: some View {
         ZStack(alignment: .leading){
         Color.flatDarkCardBackground
         HStack{
-            RemoteImage(url: new[2].image.url)
+            VStack(spacing: 15){
+            RemoteImage(url: new.image.url)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                
+            }.frame(width: 150, height: 159, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             VStack(spacing: 15){
                 DisclosureGroup(
-                    new[2].title
+                    new.title
 //                .foregroundColor(.white)
 //                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
 //                .font(.system(size: 20))){
                 ){
                 
-                Text(new[2].description)
+                Text(new.description)
                     .foregroundColor(.gray)
                     .font(.system(size:15))
                     .bold()
                 }
             }.foregroundColor(.white)
             .font(.system(size: 20))
+            .padding(.horizontal, 5)
             
             
-        }
-    }
+        }.padding(15)
+        }.clipShape(RoundedRectangle(cornerRadius: 15))
+        
     }
 }
 
+
+
+
 struct NewsRow_Previews: PreviewProvider {
     static var previews: some View {
-        NewsRow(new: news)
+        NewsRow(new: news[2])
     }
 }
+
+
+
+
+
+
 extension UIColor {
     
     static let flatDarkBackground = UIColor(red: 36, green: 36, blue: 36)

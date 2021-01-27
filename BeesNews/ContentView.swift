@@ -15,10 +15,12 @@ struct ContentView: View {
             //Use this if NavigationBarTitle is with displayMode = .inline
         }
     var body: some View {
-        
+
         NavigationView {
-            ScrollView{
-                NewsRow(new: news)
+           
+                List(news){new in
+                    NewsRow(new: new)
+                }
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -29,7 +31,7 @@ struct ContentView: View {
                                 .foregroundColor(.blue)
                         }
                         
-                    }
+                    
                     
                 } 
         }
