@@ -10,8 +10,9 @@ import SwiftUI
 struct NewsRow: View {
     var new: News
     var body: some View {
-        ZStack(alignment: .leading){
-        Color.flatDarkCardBackground
+
+        ZStack{
+            Color.flatDarkCardBackground
         HStack{
             VStack(spacing: 15){
             RemoteImage(url: new.image.url)
@@ -40,9 +41,11 @@ struct NewsRow: View {
             
             
         }.padding(15)
+
         }.clipShape(RoundedRectangle(cornerRadius: 15))
         
-    }
+        
+}
 }
 
 
