@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     init() {
-            //Use this if NavigationBarTitle is with Large Font
-           
-
-            //Use this if NavigationBarTitle is with displayMode = .inline
-        }
+        //Use this if NavigationBarTitle is with Large Font
+        
+        
+        //Use this if NavigationBarTitle is with displayMode = .inline
+    }
     var body: some View {
         TabView{
             CountryNews().tabItem { Image(systemName: "flag.circle.fill") }.tag(0)
