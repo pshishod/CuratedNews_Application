@@ -9,7 +9,8 @@ import Foundation
 
 
 struct Value: Hashable, Codable {
-    var id: ID?
+    /*var id: ID?*/
+    var _id: String?
     var clean_url: String?
     var summary: String?
     var link: String?

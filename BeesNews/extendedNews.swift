@@ -15,7 +15,6 @@ struct extendedNews: View {
     var news_object : Value
     
     
-    
     var body: some View {
         ScrollView{
         VStack(spacing:20){

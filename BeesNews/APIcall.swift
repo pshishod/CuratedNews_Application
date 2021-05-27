@@ -9,6 +9,13 @@ import Foundation
 
 //Make news_object a global variable available to all files. Change news_object into the decodable object result of the API call
 var news_object: NewNews?
+func assign_obj() -> String{
+    news_object?.articles[0].title = "This is the default title for news_object global variable"
+    news_object?.articles[0].link = "This is the default link for news_object global variable"
+    news_object?.articles[0].summary = "This is the default summary for news_object global variable"
+    news_object?.articles[0].clean_url = "This is the default clean_url for news_object global variable"
+    return "This is the news_object default initializer"
+}
 
 var obj: Value = Value()
 func assign() -> String{
@@ -18,7 +25,7 @@ func assign() -> String{
     obj.title = "muskmelon"
     var id: ID = ID()
     id._id = "12345654321qwerty"
-    obj.id = id
+    obj._id = "1234567890qwertyu"
     
     return "This is the function call"
 }
@@ -46,6 +53,7 @@ func assign() -> String{
 
 let headers = [
     "x-rapidapi-key": "b2313f35f5msh553394ee9d8aa42p1e1b77jsn89191a2445d7",
+    /*"x-rapidapi-key": "058005833dmshec499de137c4414p17cb4fjsn68022fc7cf27",*/
     "x-rapidapi-host": "newscatcher.p.rapidapi.com"
 ]
 
@@ -60,7 +68,8 @@ let request = NSMutableURLRequest(url: NSURL(string: "https://newscatcher.p.rapi
 
 
 func getreq(headers: Dictionary<String, String>, request: NSMutableURLRequest, finished: @escaping (Decodable)->Void){
-    
+    print("Inside getreq")
+    assign_obj()
     
     request.httpMethod = "GET"
     request.allHTTPHeaderFields = headers
