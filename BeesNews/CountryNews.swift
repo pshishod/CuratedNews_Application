@@ -56,7 +56,7 @@ struct CountryNews: View {
             List(news_object?.articles ?? [obj], id: \.link){ new in
                 /*Navigation link allows each individual tab in countrynews to be linked to another view. Whenever a tab is clicked, it redirectsw to a new view defined in destination.*/
                 
-                NavigationLink(destination : DestinationPageView(color: .pink)){
+                NavigationLink(destination : extendedNews(news_object: new)){
                 NewsRow(new: new)
                 }
             }

@@ -10,6 +10,7 @@ import Foundation
 
 struct Value: Hashable, Codable {
     var id: ID?
+    var clean_url: String?
     var summary: String?
     var link: String?
     var media: String? //Image
