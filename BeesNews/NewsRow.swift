@@ -4,12 +4,17 @@
 //
 //  Created by Priyansh Shishodia on 1/27/21.
 //
-
+//Displays a single News article.
 import SwiftUI
+
+
 
 struct NewsRow: View {
     var new: Value
+    @State private var showConnectionAlert = false
     var body: some View {
+
+        /*Button(action: { self.showConnectionAlert = true }){*/
         
         ZStack{
             Color.flatDarkCardBackground
@@ -44,9 +49,15 @@ struct NewsRow: View {
             
         }.clipShape(RoundedRectangle(cornerRadius: 15))
         .shadow(color: Color.flatDarkCardBackground, radius: 5, x: 5, y:5)
+        /*}.alert(isPresented: $showConnectionAlert) {
+    Alert(title: Text("Nice"),
+          message: Text("The alert is showing!"),
+          dismissButton: Alert.Button.default(Text("OK"),
+                                              action: { self.showConnectionAlert = false }))*/
         
-        
-    }
+            
+    
+}
 }
 
 

@@ -4,6 +4,7 @@
 //
 //  Created by Priyansh Shishodia on 1/24/21.
 //
+//Displays the front page of the application. Displays the bottom tab to navigate between pages.
 
 import SwiftUI
 

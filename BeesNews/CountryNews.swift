@@ -4,9 +4,20 @@
 //
 //  Created by Priyansh Shishodia on 1/27/21.
 //
+//Gets the API call and displays it in a tabular format
 
 import SwiftUI
 
+
+//Dummy destination page for testing purposes
+struct DestinationPageView: View {
+    var color: Color
+    var body: some View {
+        Text("Destination Page")
+            .font(.title)
+            .foregroundColor(color)
+    }
+}
 
 class update: ObservableObject{
     @Published var obj_loaded: Bool = false
@@ -31,19 +42,10 @@ struct CountryNews: View {
             
             var get_news_object: () = getreq(headers: headers, request: request){ result in
                 let str: NewNews = result as! NewNews
-            //            print("\n\n\n\n\n\n\n\n\\n\n")
-            //            print("bye")
-
-            //            print(str.articles[0].title)
                 news_object = str
                 print("this is after the completion handler, this should only print once")
                 up.obj_loaded = true
-        //            Text((news_object?.articles[0].title)!)
-                
-        //                print(news_object)
-                
-            //            print("hi")
-            //            print("\n\n\n\n\n\n\n\n\\n\n")
+
             }
             
             
@@ -51,14 +53,12 @@ struct CountryNews: View {
         
         NavigationView {
             
-
-            
-            
-//            List((news_object?.articles ?? [obj])){new in
-//                NewsRow(new: new).padding(5)
-//            }
             List(news_object?.articles ?? [obj], id: \.link){ new in
+                /*Navigation link allows each individual tab in countrynews to be linked to another view. Whenever a tab is clicked, it redirectsw to a new view defined in destination.*/
+                
+                NavigationLink(destination : DestinationPageView(color: .pink)){
                 NewsRow(new: new)
+                }
             }
             
             .navigationBarTitleDisplayMode(.large)
