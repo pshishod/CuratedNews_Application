@@ -52,8 +52,8 @@ func assign() -> String{
 
 
 let headers = [
-    "x-rapidapi-key": "b2313f35f5msh553394ee9d8aa42p1e1b77jsn89191a2445d7",
-    /*"x-rapidapi-key": "058005833dmshec499de137c4414p17cb4fjsn68022fc7cf27",*/
+    /*"x-rapidapi-key": "b2313f35f5msh553394ee9d8aa42p1e1b77jsn89191a2445d7",*/
+    "x-rapidapi-key": "058005833dmshec499de137c4414p17cb4fjsn68022fc7cf27",
     "x-rapidapi-host": "newscatcher.p.rapidapi.com"
 ]
 
@@ -69,6 +69,7 @@ let request = NSMutableURLRequest(url: NSURL(string: "https://newscatcher.p.rapi
 
 func getreq(headers: Dictionary<String, String>, request: NSMutableURLRequest, finished: @escaping (Decodable)->Void){
     print("Inside getreq")
+    UserDefaults.standard.set([], forKey: user_key)
     assign_obj()
     
     request.httpMethod = "GET"

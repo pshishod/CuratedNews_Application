@@ -16,6 +16,7 @@ struct ContentView: View {
         //Use this if NavigationBarTitle is with displayMode = .inline
     }
     var body: some View {
+        
         TabView{
             CountryNews().tabItem { Image(systemName: "flag.circle.fill") }.tag(0)
         }

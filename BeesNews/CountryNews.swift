@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-
+let user_key = "BlackList"
 //Dummy destination page for testing purposes
 struct DestinationPageView: View {
     var color: Color
@@ -62,7 +62,13 @@ struct CountryNews: View {
                 /*Navigation link allows each individual tab in countrynews to be linked to another view. Whenever a tab is clicked, it redirectsw to a new view defined in destination.*/
                 
                 NavigationLink(destination : extendedNews(news_object: new)){
+                    
+                    /*uncomment before running*/
+                    
                 NewsRow(new: new)
+                    
+                    
+                    
                 }
                     
                 }.onDelete(perform: removeRows)//If the user deletes the selected, row, then call removeRows
@@ -89,18 +95,65 @@ struct CountryNews: View {
     }
     /*----- Function to remove the selected row -----*/
     func removeRows(at offsets: IndexSet) {
+        
+        var tb_deleted : String?
+        var arr_len : Int?
+        var indices : IndexSet = []
 
-        news_object?.articles.remove(atOffsets: offsets) //This removes the row from the global variable news_object
+        /*----- If the selected publisher to be removed is the first selected publisher, then add it to the storage to remember -----*/
+        if UserDefaults.standard.object(forKey: user_key) == nil{
+
+            offsets.forEach{index in
+
+                UserDefaults.standard.set([news_object?.articles[index].clean_url], forKey: user_key)
+                tb_deleted = news_object?.articles[index].clean_url
+            }
+        }else{
+            /*----- Otherwise, add it to the array containing the blacklisted publishers -----*/
+            var blacklisted = UserDefaults.standard.object(forKey: user_key) as! [String]
+            
+            offsets.forEach{index in
+                
+                if(!(blacklisted.contains((news_object?.articles[index].clean_url)!))){
+                    
+                    blacklisted.append(news_object?.articles[index].clean_url ?? "default_value")
+                    tb_deleted = news_object?.articles[index].clean_url
+                    
+                }else{
+                    print("\n\n\n THIS SHOULD NEVER PRINT\n\n\n")
+                }
+            
+            }
+            
+            UserDefaults.standard.set(blacklisted, forKey: user_key)
+            arr_len = news_object?.articles.count
+            
+            for index in 0..<arr_len! {
+                print("\nThe index is \(index)")
+                print("arrlen is  : \(String(describing: arr_len))")
+                if(tb_deleted == news_object?.articles[index].clean_url){
+                
+                    indices.insert(index)
+                    
+            }
+ 
+        }
+        
+            
+        news_object?.articles.remove(atOffsets: indices)//This removes the rows from the global variable news_object
         
         
-        ref.refreshing = true   //Update the view to allow the new list to be visible.
+        
+        ref.refreshing = true    //Update the view to allow the new list to be visible.
         
         
     }
-    
-    
-    
 }
+}
+    
+    
+    
+
 
 
 struct CountryNews_Previews: PreviewProvider {
