@@ -163,6 +163,8 @@ struct CountryNews: View {
         
         
         ref.refreshing = true    //Update the view to allow the new list to be visible.
+        countryNews_message = true  //hold a message to blacklisted_pubs indicating that it needs to refresh once it is viewed.
+            
         
         
     }

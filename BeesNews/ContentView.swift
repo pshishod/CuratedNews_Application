@@ -9,19 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    init() {
-        //Use this if NavigationBarTitle is with Large Font
-        
-        
-        //Use this if NavigationBarTitle is with displayMode = .inline
-    }
+    @State private var selection = 0
+
     var body: some View {
-        
-        TabView{
-            CountryNews().tabItem { Image(systemName: "flag.circle.fill") }.tag(0)
+        TabView(selection: $selection){
+            
+            CountryNews().tabItem { Image(systemName: "doc.append") }.tag(1)
+            BlacklistedPubs().tabItem {
+                Image(systemName: "bin.xmark.fill") }.tag(2)
         }
-        
-    }
+
+}
 }
 
 struct ContentView_Previews: PreviewProvider {
