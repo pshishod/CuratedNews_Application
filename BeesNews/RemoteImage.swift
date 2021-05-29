@@ -4,6 +4,7 @@
 //
 //  Created by Priyansh Shishodia on 1/27/21.
 //
+//Gets the image from a URL. Usage: As is
 
 import SwiftUI
 

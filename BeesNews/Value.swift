@@ -4,6 +4,7 @@
 //
 //  Created by Priyansh Shishodia on 1/29/21.
 //
+//Holds the object definition of the Value object
 
 import Foundation
 

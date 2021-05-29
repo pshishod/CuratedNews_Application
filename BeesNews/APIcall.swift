@@ -8,7 +8,7 @@
 import Foundation
 
 //Make news_object a global variable available to all files. Change news_object into the decodable object result of the API call
-var news_object: NewNews?
+
 func assign_obj() -> String{
     news_object?.articles[0].title = "This is the default title for news_object global variable"
     news_object?.articles[0].link = "This is the default link for news_object global variable"
@@ -17,7 +17,7 @@ func assign_obj() -> String{
     return "This is the news_object default initializer"
 }
 
-var obj: Value = Value()
+
 func assign() -> String{
     obj.summary = "muskmelon"
     obj.link = "muskmelon"
