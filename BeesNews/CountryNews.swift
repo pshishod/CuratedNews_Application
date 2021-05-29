@@ -47,6 +47,24 @@ struct CountryNews: View {
                 let str: NewNews = result as! NewNews   //Make the API call and store it in str
                 news_object = str   //Store the NewNews object from the API call in the global variable news_object
                 print("this is after the completion handler, this should only print once")  //Sanity check to make sure only one API call is going through
+                
+                /*----- Below is the code to delete the news that is already blacklisted -----*/
+                let blacklisted = UserDefaults.standard.object(forKey: user_key) as! [String]
+                let blacklist_len = blacklisted.count
+                let arr_len = news_object?.articles.count
+                var indices : IndexSet = []
+                for i in 0..<blacklist_len {
+                    for j in 0..<arr_len! {
+                        if(blacklisted[i] == news_object?.articles[j].clean_url){
+                            indices.insert(j)
+                        }
+                    }
+                }
+                news_object?.articles.remove(atOffsets: indices)
+                
+               
+                /*----- Code ends above this -----*/
+                
                 up.obj_loaded = true    //Update the boolean to update the view
 
             }

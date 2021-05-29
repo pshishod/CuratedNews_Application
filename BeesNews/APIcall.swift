@@ -69,7 +69,7 @@ let request = NSMutableURLRequest(url: NSURL(string: "https://newscatcher.p.rapi
 
 func getreq(headers: Dictionary<String, String>, request: NSMutableURLRequest, finished: @escaping (Decodable)->Void){
     print("Inside getreq")
-    UserDefaults.standard.set([], forKey: user_key)
+//    UserDefaults.standard.set([], forKey: user_key)
     assign_obj()
     
     request.httpMethod = "GET"
